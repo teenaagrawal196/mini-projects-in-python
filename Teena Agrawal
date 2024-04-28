@@ -1,0 +1,173 @@
+#Basic calculator
+Num1=int(input("Enter 1 number:"))
+Num2=int(input("Enter 2 number:"))
+choice=input("Enter your choice between \n + - * / :")
+if choice=="+" :
+     print(Num1+Num2)
+elif choice== "-":
+     print(Num1-Num2)
+elif choice== "*":
+     print(Num1*Num2)
+elif choice== "/":
+     print(Num1/Num2)
+else:
+     print("please choose valid option")
+
+#Number system
+s=int(input("enter the starting point"))
+e=int(input("enter the ending point"))
+u=int(input("enter the updation point"))
+order=input("enter the order between forward and reverse")
+direction=input("enter the direction between row and column")
+if(direction=="row" and order=="reverse"):
+  for i in range(s,e,u):
+    print(i,end=' ')
+elif(direction=="row" and order=="forward"):
+  for i in range(s,e+1,u):
+    print(i,end=' ')
+elif(direction=="column" and order=="reverse"):
+  for i in range(s,e,u):
+    print(i)
+elif(direction=="row" and order=="forawrd"):
+  for i in range(s,e+1,u):
+    print(i)
+else:
+   print("Invalid")
+
+#Voting system
+age=int(input("enter your age:"))
+if age>=18 :
+    print("you are eligible for vote please enter your choice ")
+    choice=int(input(" choose 1 for BJP \n choose 2 for Congress \n choose 3 for samajwadi party \n choose 4 for AAP \n Enter your choice :"))
+    if choice==1:
+       print("you vote for BJP \n Thankyou for voting")
+    elif choice==2:
+       print("you vote for samajwadi party \n Thankyou for voting")
+    elif choice==3:
+       print("you vote for AAp \n Thankyou for voting")
+    elif choice==4:
+       print("you vote for Congress \n Thankyou for voting")
+    else:
+       print("invalid option.Please choose valid party")
+else:
+    print("you are not eligible for vote")
+
+# Grading system
+
+Name=input("Enter the student name:")
+Maths=int(input("Enter the marks of Maths:"))
+Physics=int(input("Enter the marks of Physics:"))
+Chemistry=int(input("Enter the marks of Chemistry:"))
+English=int(input("Enter the marks of English:"))
+Total_marks=Maths+Physics+Chemistry+English
+print(Total_marks)
+percentage=Total_marks/400*100
+print(percentage,"%")
+if percentage>=95 :
+    print("Congratulations",Name,"\n You got A+ grade")
+elif percentage>=90 :
+    print("Congratulations",Name,"\n You got A grade")
+elif percentage>=85 :
+    print("Congratulations",Name,"\n You got B+ grade")
+elif percentage>=80 :
+    print("Congratulations",Name,"\n You got B grade")
+elif percentage>=75 :
+    print("Congratulations",Name,"\n You got C grade")
+else:
+    print("passed,keep work harder")
+
+#Inventory system
+def generate_bill(cart, prices):
+    total_cost = 0
+    
+    print("************ BILL ************")
+    for item, quantity in cart.items():
+        if item in prices:
+            cost = prices[item] * quantity
+            print(f"{item}: {quantity} x Rs{prices[item]} = Rs{cost}")
+            total_cost += cost
+        else:
+            print(f"{item}: Price not available")
+    
+    print("THANKYOU")
+    print(f"Total: Rs{total_cost}")
+
+#prices are values in dict
+def main():
+    prices = {"mango":100,"grapes":60,"pomegranate":30,
+              "potato":30,"onion":150,"brinjal":40,
+              "coke":40,"lays":20,"chocolate":100,"butter":35,
+              "pencil":14,"macroni":28,"waffers":35,"maggie":30,"notebook":40,
+              "marker":20,"sprite":20,"chowmein":80,"pizza":150,"chips":20,"biscuit":10}
+    
+    
+    cart = {}
+    while True:
+        print("\nAvailable Items:")
+        for item in prices:
+            print(item)
+        
+        choice = input("Enter item (or enter done/DONE/Done to finish): ")
+        if choice == 'done'or 'DONE'or 'Done':
+            break
+        
+        if choice in prices:
+            quantity = int(input("Enter quantity: "))
+            if choice in cart:
+                cart[choice] += quantity
+            else:
+                cart[choice] = quantity
+
+        else:
+            print("Invalid item!")
+    
+    generate_bill(cart, prices)
+
+if _name_ == "_main_":
+    main()
+
+
+#No. guessing game
+import random
+number_to_guess = random.randint(1, 100)
+num_guesses = 10
+for i in range(num_guesses):
+    guess = int(input("Enter your guess between 1 and 100: "))
+    if guess < number_to_guess:
+        print("Too low! Try again.")
+    elif guess > number_to_guess:
+        print("Too high! Try again.")
+    else:
+        print("Congratulations! You guessed the correct number.")
+        break
+if guess != number_to_guess:
+    print(f"Sorry, you didn't guess the correct number. The correct number was {number_to_guess}.")
+
+#Roll the dice
+import random 
+b=random.randint(1,6)
+print("the number on your dice is ",b)
+
+#Rock Paper Scissor
+import random
+def play_game():
+    choices = {"rock": 0, "paper": 1, "scissors": 2}
+    computer_choice = random.choice(["rock", "paper", "scissors"])
+    player_choice = input("Enter your choice (rock, paper, or scissors): ")
+    player_value = choices[player_choice]
+    diff = (player_value - choices[computer_choice] + 3) % 3
+    if diff == 0:
+        print("It's a tie!")
+    elif diff == 1:
+        print("You win!")
+    else:
+        print("Computer wins!")
+    print(f"Computer chose {computer_choice}.")
+for i in range(5):
+    play_game()
+
+#Reporting (Save into file)
+file1 = open('output.txt', 'w')
+for x in range(9):
+    file1.write(str(x) + '\n')
+file1.close()
